@@ -27,7 +27,10 @@ CCRenderTexture* CCLabelTTFWithStroke::createStroke(CCLabelTTF *label, float siz
 	CCPoint bottomLeft=ccp(labelSize.width * label->getAnchorPoint().x + size, labelSize.height * label->getAnchorPoint().y + size);
 	CCPoint positionOffset=ccp(label->getContentSize().width/2, label->getContentSize().height/2);
 
+
+	//begin이랑 end가 있는데 뭐하는건지 모르겠다.
 	rt->begin();
+
 	label->setPosition(originalPos);
 	label->setColor(originalColor);
 	label->setBlendFunc(originalBlend);
@@ -39,36 +42,30 @@ CCRenderTexture* CCLabelTTFWithStroke::createStroke(CCLabelTTF *label, float siz
 	return rt;
 }
 
-CCLabelTTFWithStroke::create(const char *string, const char *fontName, float fontSize){
-	CCLabelTTF* label=CCLabelTTF::create(*string, *fontName, fontSize);
+CCLabelTTF *CCLabelTTFWithStroke::create(const char *string, const char *fontName, float fontSize){
+	CCLabelTTF* label=CCLabelTTF::create(string, fontName, fontSize);
 	setStrokeSize(2);
 	setStrokeColor(ccc3(15, 15, 15));
 	return label;
 }
 
 
-create(const char *string, const char *fontName, float fontSize){
-	setStrokeSize(2);
-	setStrokeColor(ccc3(15, 15, 15));
-	
-}
-
-CCLabelTTFWithStroke::setFontName(const char *fontName){
+void CCLabelTTFWithStroke::setFontName(const char *fontName){
 	setFontName(fontName);
 	this->setShadow();
 }
 
-CCLabelTTFWithStroke::setFontSize(float fontSize){
+void CCLabelTTFWithStroke::setFontSize(float fontSize){
 	setFontSize(fontSize);
 	this->setShadow();
 }
 
-CCLabelTTFWithStroke::setOpacity(GLubyte opacity){
+void CCLabelTTFWithStroke::setOpacity(GLubyte opacity){
 	setOpacity(opacity);
 	this->setShadow();
 }
 
-CCLabelTTFWithStroke::setShadow(){
+void CCLabelTTFWithStroke::setShadow(){
 	this->removeChildByTag(kTagStroke, true);
 	if(!this->getString()){
 		return;

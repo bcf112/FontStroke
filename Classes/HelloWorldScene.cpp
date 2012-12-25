@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "CCLabelTTFWithStroke.h"
 
 using namespace cocos2d;
 
@@ -60,28 +61,14 @@ bool HelloWorld::init()
         // Add the menu to HelloWorld layer as a child layer.
         this->addChild(pMenu, 1);
 
-        // 2. Add a label shows "Hello World".
+		CCLabelTTF *label=CCLabelTTF::create("abcd", "Arial", 30.0f);
+		label->setPosition(ccp(50,50));
+		this->addChild(label);
 
-        // Create a label and initialize with string "Hello World".
-        CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
-        CC_BREAK_IF(! pLabel);
-
-        // Get window size and place the label upper. 
-        CCSize size = CCDirector::sharedDirector()->getWinSize();
-        pLabel->setPosition(ccp(size.width / 2, size.height - 50));
-
-        // Add the label to HelloWorld layer as a child layer.
-        this->addChild(pLabel, 1);
-
-        // 3. Add add a splash screen, show the cocos2d splash image.
-        CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-        CC_BREAK_IF(! pSprite);
-
-        // Place the sprite on the center of the screen
-        pSprite->setPosition(ccp(size.width/2, size.height/2));
-
-        // Add the sprite to HelloWorld layer as a child layer.
-        this->addChild(pSprite, 0);
+	
+		CCRenderTexture *stroke=CCLabelTTFWithStroke::createStroke(label, 30.0f, ccc3(30,40,50));
+		stroke->setPosition(ccp(100,100));
+		this->addChild(stroke);
 
         bRet = true;
     } while (0);
