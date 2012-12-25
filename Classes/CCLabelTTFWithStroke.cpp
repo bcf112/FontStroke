@@ -27,9 +27,12 @@ CCRenderTexture* CCLabelTTFWithStroke::createStroke(CCLabelTTF *label, float siz
 	CCPoint bottomLeft=ccp(labelSize.width * label->getAnchorPoint().x + size, labelSize.height * label->getAnchorPoint().y + size);
 	CCPoint positionOffset=ccp(label->getContentSize().width/2, label->getContentSize().height/2);
 
-
-	//begin이랑 end가 있는데 뭐하는건지 모르겠다.
 	rt->begin();
+	for(int i=0; i<360; i+=45){
+		label->setPosition(ccp(bottomLeft.x + sin(CC_DEGREES_TO_RADIANS(i))*size, bottomLeft.y + cos(CC_DEGREES_TO_RADIANS(i))*size));
+		label->visit();
+	}
+	rt->end();
 
 	label->setPosition(originalPos);
 	label->setColor(originalColor);
@@ -48,7 +51,6 @@ CCLabelTTF *CCLabelTTFWithStroke::create(const char *string, const char *fontNam
 	setStrokeColor(ccc3(15, 15, 15));
 	return label;
 }
-
 
 void CCLabelTTFWithStroke::setFontName(const char *fontName){
 	setFontName(fontName);
