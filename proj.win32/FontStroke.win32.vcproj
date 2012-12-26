@@ -206,7 +206,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Classes\CCLabelTTFWithStroke.cpp"
+				RelativePath=".\Cocos2dxUtil.cpp"
 				>
 			</File>
 			<File
@@ -227,7 +227,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Classes\CCLabelTTFWithStroke.h"
+				RelativePath=".\Cocos2dxUtil.h"
 				>
 			</File>
 			<File

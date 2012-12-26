@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-#include "CCLabelTTFWithStroke.h"
+#include "Cocos2dxUtil.h"
 
 using namespace cocos2d;
 
@@ -61,14 +61,14 @@ bool HelloWorld::init()
         // Add the menu to HelloWorld layer as a child layer.
         this->addChild(pMenu, 1);
 
-		CCLabelTTF *label=CCLabelTTF::create("abcd", "Arial", 30.0f);
-		label->setPosition(ccp(50,50));
-		this->addChild(label);
-
-	
-		CCRenderTexture *stroke=CCLabelTTFWithStroke::createStroke(label, 30.0f, ccc3(30,40,50));
-		stroke->setPosition(ccp(100,100));
+		//사용할 때 주의점!!!
+		//stroke를 먼저 그리고, 그 다음에 label을 그려야 한다.
+		CCLabelTTF *label=CCLabelTTF::create("Hello World", "Arial", 50);
+		label->setPosition(ccp(200,200));
+		label->setColor(ccWHITE);
+		CCRenderTexture *stroke=Cocos2dxUtil::createStroke(label, 2, ccRED);
 		this->addChild(stroke);
+		//this->addChild(label);
 
         bRet = true;
     } while (0);
@@ -81,4 +81,3 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     // "close" menu item clicked
     CCDirector::sharedDirector()->end();
 }
-

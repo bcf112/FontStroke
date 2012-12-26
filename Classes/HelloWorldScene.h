@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+using namespace cocos2d;
+
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
@@ -15,8 +17,11 @@ public:
     // a selector callback
     void menuCloseCallback(CCObject* pSender);
 
+	CCRenderTexture* createStroke(CCLabelTTF *label, float size, ccColor3B cor);
     // implement the "static node()" method manually
     CREATE_FUNC(HelloWorld);
+
+	
 };
 
 #endif  // __HELLOWORLD_SCENE_H__
